@@ -9,21 +9,29 @@
 /* Begin PBXBuildFile section */
 		4448FA2823B7B433003A3E17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4448FA2723B7B433003A3E17 /* AppDelegate.swift */; };
 		4448FA2A23B7B433003A3E17 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4448FA2923B7B433003A3E17 /* SceneDelegate.swift */; };
-		4448FA2C23B7B433003A3E17 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4448FA2B23B7B433003A3E17 /* ContentView.swift */; };
 		4448FA2E23B7B434003A3E17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4448FA2D23B7B434003A3E17 /* Assets.xcassets */; };
 		4448FA3123B7B434003A3E17 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4448FA3023B7B434003A3E17 /* Preview Assets.xcassets */; };
 		4448FA3423B7B434003A3E17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4448FA3223B7B434003A3E17 /* LaunchScreen.storyboard */; };
+		4448FA3D23B7B486003A3E17 /* PointCheckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4448FA3C23B7B486003A3E17 /* PointCheckVC.swift */; };
+		4448FA4023B7B777003A3E17 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4448FA3F23B7B777003A3E17 /* Extensions.swift */; };
+		4448FA4223B7BBB5003A3E17 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4448FA4123B7BBB5003A3E17 /* MainTabBarController.swift */; };
+		4448FA4623B7BD5B003A3E17 /* ViewPointChecks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4448FA4523B7BD5B003A3E17 /* ViewPointChecks.swift */; };
+		4448FA4823B8011B003A3E17 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4448FA4723B8011B003A3E17 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4448FA2423B7B433003A3E17 /* ShinesEnergyPointCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShinesEnergyPointCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4448FA2723B7B433003A3E17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4448FA2923B7B433003A3E17 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4448FA2B23B7B433003A3E17 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4448FA2D23B7B434003A3E17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4448FA3023B7B434003A3E17 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4448FA3323B7B434003A3E17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4448FA3523B7B434003A3E17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4448FA3C23B7B486003A3E17 /* PointCheckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCheckVC.swift; sourceTree = "<group>"; };
+		4448FA3F23B7B777003A3E17 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4448FA4123B7BBB5003A3E17 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		4448FA4523B7BD5B003A3E17 /* ViewPointChecks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPointChecks.swift; sourceTree = "<group>"; };
+		4448FA4723B8011B003A3E17 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +66,12 @@
 			children = (
 				4448FA2723B7B433003A3E17 /* AppDelegate.swift */,
 				4448FA2923B7B433003A3E17 /* SceneDelegate.swift */,
-				4448FA2B23B7B433003A3E17 /* ContentView.swift */,
-				4448FA2D23B7B434003A3E17 /* Assets.xcassets */,
-				4448FA3223B7B434003A3E17 /* LaunchScreen.storyboard */,
+				4448FA4123B7BBB5003A3E17 /* MainTabBarController.swift */,
+				4448FA3E23B7B759003A3E17 /* Utilities */,
+				4448FA4323B7BD01003A3E17 /* NewPointCheck */,
+				4448FA4423B7BD3D003A3E17 /* ViewPointChecks */,
 				4448FA3523B7B434003A3E17 /* Info.plist */,
+				4448FA3B23B7B44F003A3E17 /* Views */,
 				4448FA2F23B7B434003A3E17 /* Preview Content */,
 			);
 			path = ShinesEnergyPointCheck;
@@ -73,6 +83,40 @@
 				4448FA3023B7B434003A3E17 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4448FA3B23B7B44F003A3E17 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4448FA3223B7B434003A3E17 /* LaunchScreen.storyboard */,
+				4448FA2D23B7B434003A3E17 /* Assets.xcassets */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4448FA3E23B7B759003A3E17 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4448FA3F23B7B777003A3E17 /* Extensions.swift */,
+				4448FA4723B8011B003A3E17 /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		4448FA4323B7BD01003A3E17 /* NewPointCheck */ = {
+			isa = PBXGroup;
+			children = (
+				4448FA3C23B7B486003A3E17 /* PointCheckVC.swift */,
+			);
+			path = NewPointCheck;
+			sourceTree = "<group>";
+		};
+		4448FA4423B7BD3D003A3E17 /* ViewPointChecks */ = {
+			isa = PBXGroup;
+			children = (
+				4448FA4523B7BD5B003A3E17 /* ViewPointChecks.swift */,
+			);
+			path = ViewPointChecks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,9 +190,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4448FA4623B7BD5B003A3E17 /* ViewPointChecks.swift in Sources */,
 				4448FA2823B7B433003A3E17 /* AppDelegate.swift in Sources */,
 				4448FA2A23B7B433003A3E17 /* SceneDelegate.swift in Sources */,
-				4448FA2C23B7B433003A3E17 /* ContentView.swift in Sources */,
+				4448FA4223B7BBB5003A3E17 /* MainTabBarController.swift in Sources */,
+				4448FA4823B8011B003A3E17 /* Constants.swift in Sources */,
+				4448FA3D23B7B486003A3E17 /* PointCheckVC.swift in Sources */,
+				4448FA4023B7B777003A3E17 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
