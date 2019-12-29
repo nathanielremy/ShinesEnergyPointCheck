@@ -9,9 +9,10 @@
 import Foundation
 
 struct Constants {
-    static let clientName = "clientName"
+    static let customerName = "customerName"
     static let jobNumber = "jobNumber"
     static let serialnumber = "serialNumber"
+    static let modelNumber = "modelNumber"
     static let indoorUnitLocation = "indoorUnitLocation"
     static let T1 = "T1"
     static let T1Meaning = "Room Temperature"
@@ -55,11 +56,17 @@ struct Constants {
     static let ST = "ST"
     static let STMeaning = "Cause of Compressor Stop"
     
-    static let DAT = "DAT"
+    static let faults = "faults"
+    static let faultsMeaning = "Fault Codes"
     
-    static let DATMeaning = "Equipment Information"
+    static let pipeLength = "pipeLength"
+    static let pipeLengthMeaning = "Length of Ref Pipe Between?"
     
-    static let TR = "TR"
-    static let TRMeaning = "Outdoor Unit"
+    static let outdoorLocation = "outdoorLocation"
+    static let outdoorLocationMeaning = "Facing Which Direction"
     
+    static let remoteControlSetting = "remoteControlSetting"
+    
+    static let modeTempFollowMe = "modeTempFollowMe"
+    static let modeTempFollowMeMeaning = "Mode, Temp & Follow Me?"
 }

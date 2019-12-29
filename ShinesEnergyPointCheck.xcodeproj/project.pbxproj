@@ -12,14 +12,17 @@
 		4448FA2E23B7B434003A3E17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4448FA2D23B7B434003A3E17 /* Assets.xcassets */; };
 		4448FA3123B7B434003A3E17 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4448FA3023B7B434003A3E17 /* Preview Assets.xcassets */; };
 		4448FA3423B7B434003A3E17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4448FA3223B7B434003A3E17 /* LaunchScreen.storyboard */; };
-		4448FA3D23B7B486003A3E17 /* PointCheckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4448FA3C23B7B486003A3E17 /* PointCheckVC.swift */; };
+		4448FA3D23B7B486003A3E17 /* NewPointCheckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4448FA3C23B7B486003A3E17 /* NewPointCheckVC.swift */; };
 		4448FA4023B7B777003A3E17 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4448FA3F23B7B777003A3E17 /* Extensions.swift */; };
 		4448FA4223B7BBB5003A3E17 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4448FA4123B7BBB5003A3E17 /* MainTabBarController.swift */; };
 		4448FA4623B7BD5B003A3E17 /* ViewPointChecks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4448FA4523B7BD5B003A3E17 /* ViewPointChecks.swift */; };
 		4448FA4823B8011B003A3E17 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4448FA4723B8011B003A3E17 /* Constants.swift */; };
+		44F3D0AD23B9623D0094D62F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44F3D0AC23B9623D0094D62F /* GoogleService-Info.plist */; };
+		9092C2351BFD03AF2288C02F /* Pods_ShinesEnergyPointCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EBB19700BED96AA237E3C6E /* Pods_ShinesEnergyPointCheck.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3EBB19700BED96AA237E3C6E /* Pods_ShinesEnergyPointCheck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShinesEnergyPointCheck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4448FA2423B7B433003A3E17 /* ShinesEnergyPointCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShinesEnergyPointCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4448FA2723B7B433003A3E17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4448FA2923B7B433003A3E17 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -27,11 +30,14 @@
 		4448FA3023B7B434003A3E17 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4448FA3323B7B434003A3E17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4448FA3523B7B434003A3E17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4448FA3C23B7B486003A3E17 /* PointCheckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCheckVC.swift; sourceTree = "<group>"; };
+		4448FA3C23B7B486003A3E17 /* NewPointCheckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPointCheckVC.swift; sourceTree = "<group>"; };
 		4448FA3F23B7B777003A3E17 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4448FA4123B7BBB5003A3E17 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		4448FA4523B7BD5B003A3E17 /* ViewPointChecks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPointChecks.swift; sourceTree = "<group>"; };
 		4448FA4723B8011B003A3E17 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		44F3D0AC23B9623D0094D62F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6377036B5ADF6364DBC9EFE6 /* Pods-ShinesEnergyPointCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShinesEnergyPointCheck.debug.xcconfig"; path = "Target Support Files/Pods-ShinesEnergyPointCheck/Pods-ShinesEnergyPointCheck.debug.xcconfig"; sourceTree = "<group>"; };
+		7AA1400D112CDAE33047E1EA /* Pods-ShinesEnergyPointCheck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShinesEnergyPointCheck.release.xcconfig"; path = "Target Support Files/Pods-ShinesEnergyPointCheck/Pods-ShinesEnergyPointCheck.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9092C2351BFD03AF2288C02F /* Pods_ShinesEnergyPointCheck.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +57,8 @@
 			children = (
 				4448FA2623B7B433003A3E17 /* ShinesEnergyPointCheck */,
 				4448FA2523B7B433003A3E17 /* Products */,
+				C06122BFAB65DDA3AA873F45 /* Pods */,
+				FE51D52D178232B55294A45A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,8 +79,8 @@
 				4448FA3E23B7B759003A3E17 /* Utilities */,
 				4448FA4323B7BD01003A3E17 /* NewPointCheck */,
 				4448FA4423B7BD3D003A3E17 /* ViewPointChecks */,
-				4448FA3523B7B434003A3E17 /* Info.plist */,
 				4448FA3B23B7B44F003A3E17 /* Views */,
+				44F3D0AB23B962180094D62F /* Resources */,
 				4448FA2F23B7B434003A3E17 /* Preview Content */,
 			);
 			path = ShinesEnergyPointCheck;
@@ -106,7 +115,7 @@
 		4448FA4323B7BD01003A3E17 /* NewPointCheck */ = {
 			isa = PBXGroup;
 			children = (
-				4448FA3C23B7B486003A3E17 /* PointCheckVC.swift */,
+				4448FA3C23B7B486003A3E17 /* NewPointCheckVC.swift */,
 			);
 			path = NewPointCheck;
 			sourceTree = "<group>";
@@ -119,6 +128,33 @@
 			path = ViewPointChecks;
 			sourceTree = "<group>";
 		};
+		44F3D0AB23B962180094D62F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				44F3D0AC23B9623D0094D62F /* GoogleService-Info.plist */,
+				4448FA3523B7B434003A3E17 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C06122BFAB65DDA3AA873F45 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6377036B5ADF6364DBC9EFE6 /* Pods-ShinesEnergyPointCheck.debug.xcconfig */,
+				7AA1400D112CDAE33047E1EA /* Pods-ShinesEnergyPointCheck.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		FE51D52D178232B55294A45A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3EBB19700BED96AA237E3C6E /* Pods_ShinesEnergyPointCheck.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,9 +162,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4448FA3823B7B434003A3E17 /* Build configuration list for PBXNativeTarget "ShinesEnergyPointCheck" */;
 			buildPhases = (
+				B4D1AA80E9005256FC2CC63C /* [CP] Check Pods Manifest.lock */,
 				4448FA2023B7B433003A3E17 /* Sources */,
 				4448FA2123B7B433003A3E17 /* Frameworks */,
 				4448FA2223B7B433003A3E17 /* Resources */,
+				4A99A5B90FF07FCEF6710771 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -178,12 +216,66 @@
 			buildActionMask = 2147483647;
 			files = (
 				4448FA3423B7B434003A3E17 /* LaunchScreen.storyboard in Resources */,
+				44F3D0AD23B9623D0094D62F /* GoogleService-Info.plist in Resources */,
 				4448FA3123B7B434003A3E17 /* Preview Assets.xcassets in Resources */,
 				4448FA2E23B7B434003A3E17 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4A99A5B90FF07FCEF6710771 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShinesEnergyPointCheck/Pods-ShinesEnergyPointCheck-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShinesEnergyPointCheck/Pods-ShinesEnergyPointCheck-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4D1AA80E9005256FC2CC63C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ShinesEnergyPointCheck-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4448FA2023B7B433003A3E17 /* Sources */ = {
@@ -195,7 +287,7 @@
 				4448FA2A23B7B433003A3E17 /* SceneDelegate.swift in Sources */,
 				4448FA4223B7BBB5003A3E17 /* MainTabBarController.swift in Sources */,
 				4448FA4823B8011B003A3E17 /* Constants.swift in Sources */,
-				4448FA3D23B7B486003A3E17 /* PointCheckVC.swift in Sources */,
+				4448FA3D23B7B486003A3E17 /* NewPointCheckVC.swift in Sources */,
 				4448FA4023B7B777003A3E17 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,6 +422,7 @@
 		};
 		4448FA3923B7B434003A3E17 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6377036B5ADF6364DBC9EFE6 /* Pods-ShinesEnergyPointCheck.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -337,6 +430,7 @@
 				DEVELOPMENT_TEAM = 6ZT386G464;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ShinesEnergyPointCheck/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -344,12 +438,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = NathanielRemy.ShinesEnergyPointCheck;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		4448FA3A23B7B434003A3E17 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AA1400D112CDAE33047E1EA /* Pods-ShinesEnergyPointCheck.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -357,6 +452,7 @@
 				DEVELOPMENT_TEAM = 6ZT386G464;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ShinesEnergyPointCheck/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -364,7 +460,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = NathanielRemy.ShinesEnergyPointCheck;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
