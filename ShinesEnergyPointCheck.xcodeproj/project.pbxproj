@@ -81,6 +81,7 @@
 				4448FA4423B7BD3D003A3E17 /* ViewPointChecks */,
 				4448FA3B23B7B44F003A3E17 /* Views */,
 				44F3D0AB23B962180094D62F /* Resources */,
+				4448FA3523B7B434003A3E17 /* Info.plist */,
 				4448FA2F23B7B434003A3E17 /* Preview Content */,
 			);
 			path = ShinesEnergyPointCheck;
@@ -132,7 +133,6 @@
 			isa = PBXGroup;
 			children = (
 				44F3D0AC23B9623D0094D62F /* GoogleService-Info.plist */,
-				4448FA3523B7B434003A3E17 /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -143,7 +143,6 @@
 				6377036B5ADF6364DBC9EFE6 /* Pods-ShinesEnergyPointCheck.debug.xcconfig */,
 				7AA1400D112CDAE33047E1EA /* Pods-ShinesEnergyPointCheck.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
