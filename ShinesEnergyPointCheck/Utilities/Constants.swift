@@ -10,10 +10,20 @@ import Foundation
 
 struct Constants {
     static let customerName = "customerName"
+    static let customerNameMeaning = "Customer Name"
+    
     static let jobNumber = "jobNumber"
-    static let serialnumber = "serialNumber"
+    static let jobNumberMeaning = "Job Number"
+    
+    static let serialNumber = "serialNumber"
+    static let serialNumberMeaning = "Serial Number"
+    
     static let modelNumber = "modelNumber"
+    static let modelNumberMeaning = "Model Number"
+    
     static let indoorUnitLocation = "indoorUnitLocation"
+    static let indoorUnitLocationMeaning = "Indoor Unit Location"
+    
     static let T1 = "T1"
     static let T1Meaning = "Room Temperature"
     
@@ -69,4 +79,16 @@ struct Constants {
     
     static let modeTempFollowMe = "modeTempFollowMe"
     static let modeTempFollowMeMeaning = "Mode, Temp & Follow Me?"
+    
+    static let operatingPressure = "operatingPressure"
+    static let operatingPressureMeaning = "Operating Pressure"
+    
+    static let performance = "performance"
+    static let performanceMeaning = "Performance"
+    
+    static let fanProgrammedChanged = "fanProgrammedChanged"
+    static let fanProgrammedChangedMeaning = "Fan Programmed Changed?"
+    
+    static let indoorSensorRARelocated = "indoorSensorRARelocated"
+    static let indoorSensorRARelocatedMeaning = "Indoor R/A Sensor Relocated?"
 }

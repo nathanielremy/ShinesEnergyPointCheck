@@ -10,6 +10,15 @@ import UIKit
 
 //MARK: UIView
 extension UIView {
+    static func okayAlert(title: String, message: String) -> UIAlertController {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Okay", style: .cancel , handler: nil)
+        alertController.addAction(okAction)
+        
+        return alertController
+    }
+    
     func anchor(top: NSLayoutYAxisAnchor?, left: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, right: NSLayoutXAxisAnchor?, paddingTop: CGFloat, paddingLeft: CGFloat, paddingBottom: CGFloat, paddingRight: CGFloat, width: CGFloat?, height: CGFloat?) {
         
         self.translatesAutoresizingMaskIntoConstraints = false

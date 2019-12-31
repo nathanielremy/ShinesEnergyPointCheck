@@ -23,7 +23,7 @@ class NewPointCheckVC: UIViewController {
     let customerNameLabel: UILabel = {
         let label = UILabel()
         
-        let attributedText = NSMutableAttributedString(string: "Customer Name ", attributes: [.font : UIFont.boldSystemFont(ofSize: 18), .foregroundColor : UIColor.black])
+        let attributedText = NSMutableAttributedString(string: Constants.customerNameMeaning + " ", attributes: [.font : UIFont.boldSystemFont(ofSize: 18), .foregroundColor : UIColor.black])
         attributedText.append(NSAttributedString(string: "*", attributes: [.font : UIFont.boldSystemFont(ofSize: 18), .foregroundColor : UIColor.red]))
         
         label.attributedText = attributedText
@@ -45,7 +45,7 @@ class NewPointCheckVC: UIViewController {
     let jobNumberLabel: UILabel = {
         let label = UILabel()
         
-        let attributedText = NSMutableAttributedString(string: "Job Number ", attributes: [.font : UIFont.boldSystemFont(ofSize: 18), .foregroundColor : UIColor.black])
+        let attributedText = NSMutableAttributedString(string: Constants.jobNumberMeaning + " ", attributes: [.font : UIFont.boldSystemFont(ofSize: 18), .foregroundColor : UIColor.black])
         attributedText.append(NSAttributedString(string: "*", attributes: [.font : UIFont.boldSystemFont(ofSize: 18), .foregroundColor : UIColor.red]))
         
         label.attributedText = attributedText
@@ -66,32 +66,10 @@ class NewPointCheckVC: UIViewController {
         return tf
     }()
     
-    let modelNumberLabel: UILabel = {
-        let label = UILabel()
-        
-        let attributedText = NSMutableAttributedString(string: "Model Number ", attributes: [.font : UIFont.boldSystemFont(ofSize: 18), .foregroundColor : UIColor.black])
-        attributedText.append(NSAttributedString(string: "*", attributes: [.font : UIFont.boldSystemFont(ofSize: 18), .foregroundColor : UIColor.red]))
-        
-        label.attributedText = attributedText
-        
-        return label
-    }()
-    
-    lazy var modelNumberTextField: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "Model #"
-        tf.font = UIFont.systemFont(ofSize: 14)
-        tf.borderStyle =  .roundedRect
-        tf.layer.borderColor = UIColor.black.cgColor
-        tf.delegate = self
-        
-        return tf
-    }()
-    
     let serialNumberLabel: UILabel = {
         let label = UILabel()
         
-        let attributedText = NSMutableAttributedString(string: "Serial Number ", attributes: [.font : UIFont.boldSystemFont(ofSize: 18), .foregroundColor : UIColor.black])
+        let attributedText = NSMutableAttributedString(string: Constants.serialNumberMeaning + " ", attributes: [.font : UIFont.boldSystemFont(ofSize: 18), .foregroundColor : UIColor.black])
         attributedText.append(NSAttributedString(string: "*", attributes: [.font : UIFont.boldSystemFont(ofSize: 18), .foregroundColor : UIColor.red]))
         
         label.attributedText = attributedText
@@ -110,9 +88,31 @@ class NewPointCheckVC: UIViewController {
         return tf
     }()
     
+    let modelNumberLabel: UILabel = {
+        let label = UILabel()
+        
+        let attributedText = NSMutableAttributedString(string: Constants.modelNumberMeaning + " ", attributes: [.font : UIFont.boldSystemFont(ofSize: 18), .foregroundColor : UIColor.black])
+        attributedText.append(NSAttributedString(string: "*", attributes: [.font : UIFont.boldSystemFont(ofSize: 18), .foregroundColor : UIColor.red]))
+        
+        label.attributedText = attributedText
+        
+        return label
+    }()
+    
+    lazy var modelNumberTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Model #"
+        tf.font = UIFont.systemFont(ofSize: 14)
+        tf.borderStyle =  .roundedRect
+        tf.layer.borderColor = UIColor.black.cgColor
+        tf.delegate = self
+        
+        return tf
+    }()
+    
     let indoorUnitLocationLabel: UILabel = {
         let label = UILabel()
-        label.text = "Indoor Unit Location"
+        label.text = Constants.indoorUnitLocationMeaning
         label.font = UIFont.boldSystemFont(ofSize: 18)
         
         return label
@@ -121,6 +121,49 @@ class NewPointCheckVC: UIViewController {
     lazy var indoorUnitLocationTextField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Living room"
+        tf.font = UIFont.systemFont(ofSize: 14)
+        tf.borderStyle =  .roundedRect
+        tf.layer.borderColor = UIColor.black.cgColor
+        tf.delegate = self
+        
+        return tf
+    }()
+    
+    let outdoorLocationLabel: UILabel = {
+        let label = UILabel()
+        
+        let attributedText = NSMutableAttributedString(string: "Outdoor Location ", attributes: [.font : UIFont.boldSystemFont(ofSize: 18), .foregroundColor : UIColor.black])
+        attributedText.append(NSAttributedString(string: "(\(Constants.outdoorLocationMeaning))", attributes: [.font : UIFont.systemFont(ofSize: 14), .foregroundColor : UIColor.gray]))
+        
+        label.attributedText = attributedText
+        
+        return label
+    }()
+    
+    lazy var outdoorLocationTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Outdoor location"
+        tf.font = UIFont.systemFont(ofSize: 14)
+        tf.borderStyle =  .roundedRect
+        tf.layer.borderColor = UIColor.black.cgColor
+        tf.delegate = self
+        
+        return tf
+    }()
+    
+    let pipeLengthLabel: UILabel = {
+        let label = UILabel()
+        label.text = Constants.pipeLengthMeaning
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        
+        return label
+    }()
+    
+    lazy var pipeLengthTextField: UITextField = {
+        let tf = UITextField()
+        tf.keyboardType = .numberPad
+        tf.inputAccessoryView = setupDoneButtonToolBar()
+        tf.placeholder = "Pipe length"
         tf.font = UIFont.systemFont(ofSize: 14)
         tf.borderStyle =  .roundedRect
         tf.layer.borderColor = UIColor.black.cgColor
@@ -481,49 +524,6 @@ class NewPointCheckVC: UIViewController {
         return tf
     }()
     
-    let pipeLengthLabel: UILabel = {
-        let label = UILabel()
-        label.text = Constants.pipeLengthMeaning
-        label.font = UIFont.boldSystemFont(ofSize: 18)
-        
-        return label
-    }()
-    
-    lazy var pipeLengthTextField: UITextField = {
-        let tf = UITextField()
-        tf.keyboardType = .numberPad
-        tf.inputAccessoryView = setupDoneButtonToolBar()
-        tf.placeholder = "Pipe length"
-        tf.font = UIFont.systemFont(ofSize: 14)
-        tf.borderStyle =  .roundedRect
-        tf.layer.borderColor = UIColor.black.cgColor
-        tf.delegate = self
-        
-        return tf
-    }()
-    
-    let outdoorLocationLabel: UILabel = {
-        let label = UILabel()
-        
-        let attributedText = NSMutableAttributedString(string: "Outdoor Location ", attributes: [.font : UIFont.boldSystemFont(ofSize: 18), .foregroundColor : UIColor.black])
-        attributedText.append(NSAttributedString(string: "(\(Constants.outdoorLocationMeaning))", attributes: [.font : UIFont.systemFont(ofSize: 14), .foregroundColor : UIColor.gray]))
-        
-        label.attributedText = attributedText
-        
-        return label
-    }()
-    
-    lazy var outdoorLocationTextField: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "Outdoor location"
-        tf.font = UIFont.systemFont(ofSize: 14)
-        tf.borderStyle =  .roundedRect
-        tf.layer.borderColor = UIColor.black.cgColor
-        tf.delegate = self
-        
-        return tf
-    }()
-    
     let remoteControlSettingLabel: UILabel = {
         let label = UILabel()
         label.text = "Remote Control Setting"
@@ -562,6 +562,91 @@ class NewPointCheckVC: UIViewController {
         return tf
     }()
     
+    let operatingPressureLabel: UILabel = {
+        let label = UILabel()
+        label.text = Constants.operatingPressureMeaning
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        
+        return label
+    }()
+    
+    lazy var operatingPressureTextField: UITextField = {
+        let tf = UITextField()
+        tf.keyboardType = .numberPad
+        tf.inputAccessoryView = setupDoneButtonToolBar()
+        tf.placeholder = "Operating pressure"
+        tf.font = UIFont.systemFont(ofSize: 14)
+        tf.borderStyle =  .roundedRect
+        tf.layer.borderColor = UIColor.black.cgColor
+        tf.delegate = self
+        
+        return tf
+    }()
+    
+    let performanceLabel: UILabel = {
+        let label = UILabel()
+        label.text = Constants.performanceMeaning
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        
+        return label
+    }()
+    
+    lazy var calculatePerformanceButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("calculate", for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.addTarget(self, action: #selector(handleCalculatePerformance), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    let performanceCalculationResultLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Calculate result"
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = .lightGray
+        
+        return label
+    }()
+    
+    @objc fileprivate func handleCalculatePerformance() {
+        print("Handeling calculate performance")
+    }
+    
+    let fanProgrammedChangedLabel: UILabel = {
+        let label = UILabel()
+        label.text = Constants.fanProgrammedChangedMeaning
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        
+        return label
+    }()
+    
+    lazy var fanProgrammedChangedSwitch: UISwitch = {
+        let toggle = UISwitch()
+        toggle.isOn = false
+        toggle.tintColor = .black
+        toggle.onTintColor = .black
+        
+        return toggle
+    }()
+    
+    let indoorRASensorRelocatedLabel: UILabel = {
+        let label = UILabel()
+        label.text = Constants.indoorSensorRARelocatedMeaning
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        
+        return label
+    }()
+    
+    lazy var indoorRASensorRelocatedSwitch: UISwitch = {
+        let toggle = UISwitch()
+        toggle.isOn = false
+        toggle.tintColor = .black
+        toggle.onTintColor = .black
+        
+        return toggle
+    }()
+    
     lazy var doneButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Done", for: .normal)
@@ -576,21 +661,76 @@ class NewPointCheckVC: UIViewController {
     }()
     
     @objc fileprivate func handleDoneButton() {
-        print("Handeling doneButton")
+        let inputs = verifyInputs()
+    }
+    
+    fileprivate func verifyInputs() -> (customerName: String, jobNumber: Int, serialNumber: String, modelNumber: String)? {
+        guard let customerName = customerNameTextField.text, customerName.count > 0, customerName != "" else {
+            let alert = UIView.okayAlert(title: "Error With Customer Name", message: "Entering the customer's name is a manditory field.")
+            self.present(alert, animated: true, completion: nil)
+            
+            return nil
+        }
+        
+        guard let jobNumber = jobNumberTextField.text, jobNumber.count == 7, let jobNumberInt = Int(jobNumber) else {
+            let alert = UIView.okayAlert(title: "Error With Job Number", message: "Entering the job number (a series of seven integers) is a manditory field.")
+            self.present(alert, animated: true, completion: nil)
+            
+            return nil
+        }
+        
+        guard let serialNumber = serialNumberTextField.text, serialNumber.count == 10 else {
+            let alert = UIView.okayAlert(title: "Error With Serial Number", message: "Entering the serial number (a series of 10 characters) is a manditory field.")
+            self.present(alert, animated: true, completion: nil)
+            return nil
+        }
+        
+        // Serial number is a string of 4 single integers, 1 string character and 5 single integers.
+        // ie. 1234a56789
+        var charCount = 0
+        for char in serialNumber {
+            charCount += 1
+            if charCount == 5 {
+                if let _ = Int(String(char)) {
+                    let alert = UIView.okayAlert(title: "Invalid Serial Number", message: "Serial Numbers are a series of 4 integers, 1 string character and 5 more integers")
+                    self.present(alert, animated: true, completion: nil)
+                    return nil
+                } else {
+                    print(char)
+                }
+            } else {
+                if let _ = Int(String(char)) {
+                    continue
+                } else {
+                    let alert = UIView.okayAlert(title: "Invalid Serial Number", message: "Serial Numbers are a series of 4 integers, 1 string character and 5 more integers")
+                    self.present(alert, animated: true, completion: nil)
+                    return nil
+                }
+            }
+        }
+        
+        return (customerName, jobNumberInt, serialNumber, "modelnumber")
     }
     
     override func viewDidLoad() {
         view.backgroundColor = .white
         navigationItem.title = "New Point Check"
+        setupDoneNavBarButton()
         setupViews()
+    }
+    
+    fileprivate func setupDoneNavBarButton() {
+        let doneBarButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(handleDoneButton))
+        doneBarButton.tintColor = .black
+        navigationItem.rightBarButtonItem = doneBarButton
     }
     
     fileprivate func setupViews() {
         view.addSubview(scrollView)
         scrollView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: nil, height: nil)
-        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + 1450)
+        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + 1800)
         
-        //Client name
+        //Customer name
         scrollView.addSubview(customerNameLabel)
         customerNameLabel.anchor(top: scrollView.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: nil)
         
@@ -625,9 +765,23 @@ class NewPointCheckVC: UIViewController {
         scrollView.addSubview(indoorUnitLocationTextField)
         indoorUnitLocationTextField.anchor(top: indoorUnitLocationLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 8, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: 35)
         
+        //Outdoor Location
+        scrollView.addSubview(outdoorLocationLabel)
+        outdoorLocationLabel.anchor(top: indoorUnitLocationTextField.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: nil)
+        
+        scrollView.addSubview(outdoorLocationTextField)
+        outdoorLocationTextField.anchor(top: outdoorLocationLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 8, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: 35)
+        
+        //Pipe Length
+        scrollView.addSubview(pipeLengthLabel)
+        pipeLengthLabel.anchor(top: outdoorLocationTextField.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: nil)
+        
+        scrollView.addSubview(pipeLengthTextField)
+        pipeLengthTextField.anchor(top: pipeLengthLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 8, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: 35)
+        
         //T1
         scrollView.addSubview(t1Label)
-        t1Label.anchor(top: indoorUnitLocationTextField.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: nil)
+        t1Label.anchor(top: pipeLengthTextField.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: nil)
         
         scrollView.addSubview(t1TextField)
         t1TextField.anchor(top: t1Label.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 8, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: 35)
@@ -730,23 +884,9 @@ class NewPointCheckVC: UIViewController {
         scrollView.addSubview(faultsTextField)
         faultsTextField.anchor(top: faultsLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 8, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: 35)
         
-        //Pipe Length
-        scrollView.addSubview(pipeLengthLabel)
-        pipeLengthLabel.anchor(top: faultsTextField.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: nil)
-        
-        scrollView.addSubview(pipeLengthTextField)
-        pipeLengthTextField.anchor(top: pipeLengthLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 8, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: 35)
-        
-        //Outdoor Location
-        scrollView.addSubview(outdoorLocationLabel)
-        outdoorLocationLabel.anchor(top: pipeLengthTextField.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: nil)
-        
-        scrollView.addSubview(outdoorLocationTextField)
-        outdoorLocationTextField.anchor(top: outdoorLocationLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 8, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: 35)
-        
         //Remote Controll Setting
         scrollView.addSubview(remoteControlSettingLabel)
-        remoteControlSettingLabel.anchor(top: outdoorLocationTextField.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: nil)
+        remoteControlSettingLabel.anchor(top: faultsTextField.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: nil)
         
         scrollView.addSubview(remoteControlSettingTextField)
         remoteControlSettingTextField.anchor(top: remoteControlSettingLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 8, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: 35)
@@ -758,9 +898,48 @@ class NewPointCheckVC: UIViewController {
         scrollView.addSubview(modeTempFollowMeTextField)
         modeTempFollowMeTextField.anchor(top: modeTempFollowMeLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 8, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: 35)
         
+        //Operating pressure
+        scrollView.addSubview(operatingPressureLabel)
+        operatingPressureLabel.anchor(top: modeTempFollowMeTextField.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: nil)
+        
+        scrollView.addSubview(operatingPressureTextField)
+        operatingPressureTextField.anchor(top: operatingPressureLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 8, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: 35)
+        
+        //Performance
+        scrollView.addSubview(performanceLabel)
+        performanceLabel.anchor(top: operatingPressureTextField.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: nil)
+        
+        scrollView.addSubview(calculatePerformanceButton)
+        calculatePerformanceButton.anchor(top: nil, left: nil, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: -20, width: nil, height: nil)
+        calculatePerformanceButton.centerYAnchor.constraint(equalTo: performanceLabel.centerYAnchor).isActive = true
+        
+        scrollView.addSubview(performanceCalculationResultLabel)
+        performanceCalculationResultLabel.anchor(top: performanceLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 26, paddingBottom: 0, paddingRight: -20, width: nil, height: nil)
+        
+        let bottomSeperatorView = UIView()
+        bottomSeperatorView.backgroundColor = .black
+        scrollView.addSubview(bottomSeperatorView)
+        bottomSeperatorView.anchor(top: nil, left: view.leftAnchor, bottom: performanceCalculationResultLabel.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 8, paddingRight: -20, width: nil, height: 0.5)
+        
+        //Fan Programmed Changed
+        scrollView.addSubview(fanProgrammedChangedLabel)
+        fanProgrammedChangedLabel.anchor(top: bottomSeperatorView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 40, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: (view.frame.width * 0.7), height: nil)
+        
+        scrollView.addSubview(fanProgrammedChangedSwitch)
+        fanProgrammedChangedSwitch.anchor(top: nil, left: fanProgrammedChangedLabel.rightAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: -25, width: nil, height: nil)
+        fanProgrammedChangedSwitch.centerYAnchor.constraint(equalTo: fanProgrammedChangedLabel.centerYAnchor).isActive = true
+        
+        //Indoor R/A Sensor Relocated
+        scrollView.addSubview(indoorRASensorRelocatedLabel)
+        indoorRASensorRelocatedLabel.anchor(top: fanProgrammedChangedLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 40, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: (view.frame.width * 0.7), height: nil)
+        
+        scrollView.addSubview(indoorRASensorRelocatedSwitch)
+        indoorRASensorRelocatedSwitch.anchor(top: nil, left: indoorRASensorRelocatedLabel.rightAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: -25, width: nil, height: nil)
+        indoorRASensorRelocatedSwitch.centerYAnchor.constraint(equalTo: indoorRASensorRelocatedLabel.centerYAnchor).isActive = true
+        
         //Done button
         scrollView.addSubview(doneButton)
-        doneButton.anchor(top: nil, left: nil, bottom: scrollView.topAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: view.frame.height + 1430, paddingRight: 0, width: 200, height: 50)
+        doneButton.anchor(top: nil, left: nil, bottom: scrollView.topAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: view.frame.height + 1780, paddingRight: 0, width: 200, height: 50)
         doneButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         doneButton.layer.cornerRadius = 50 / 2
     }
