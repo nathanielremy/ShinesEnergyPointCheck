@@ -8,10 +8,60 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class NewPointCheckVC: UIViewController {
     
     //MARK: Stored properties
+    // Display when pushing data to Firebase database
+    let activityIndicator: UIActivityIndicatorView = {
+        let ai = UIActivityIndicatorView()
+        ai.hidesWhenStopped = true
+        ai.color = UIColor.black
+        ai.translatesAutoresizingMaskIntoConstraints = false
+        
+        return ai
+    }()
+    
+    fileprivate func disableViewsAndAnimateActivityIndicator(_ bool: Bool) {
+        if bool {
+            self.activityIndicator.startAnimating()
+        } else {
+            self.activityIndicator.stopAnimating()
+        }
+        
+        navigationItem.rightBarButtonItem?.isEnabled = !bool //Top right done button
+        customerNameTextField.isEnabled = !bool
+        jobNumberTextField.isEnabled = !bool
+        serialNumberTextField.isEnabled = !bool
+        modelNumberTextField.isEnabled = !bool
+        indoorUnitLocationTextField.isEnabled = !bool
+        outdoorLocationTextField.isEnabled = !bool
+        pipeLengthTextField.isEnabled = !bool
+        t1TextField.isEnabled = !bool
+        t2TextField.isEnabled = !bool
+        t3TextField.isEnabled = !bool
+        t4TextField.isEnabled = !bool
+        tbTextField.isEnabled = !bool
+        tpTextField.isEnabled = !bool
+        thTextField.isEnabled = !bool
+        ftTextField.isEnabled = !bool
+        frTextField.isEnabled = !bool
+        ifTextField.isEnabled = !bool
+        ofTextField.isEnabled = !bool
+        laTextField.isEnabled = !bool
+        ctTextField.isEnabled = !bool
+        stTextField.isEnabled = !bool
+        faultsTextField.isEnabled = !bool
+        remoteControlSettingTextField.isEnabled = !bool
+        modeTempFollowMeTextField.isEnabled = !bool
+        operatingPressureTextField.isEnabled = !bool
+        calculatePerformanceButton.isEnabled = !bool
+        fanProgrammedChangedSwitch.isEnabled = !bool
+        indoorRASensorRelocatedSwitch.isEnabled = !bool
+        saveButton.isEnabled = !bool
+    }
+    
     lazy var scrollView: UIScrollView = {
         let sv = UIScrollView()
         sv.bounces = true
@@ -647,21 +697,109 @@ class NewPointCheckVC: UIViewController {
         return toggle
     }()
     
-    lazy var doneButton: UIButton = {
+    lazy var saveButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Done", for: .normal)
+        button.setTitle("Save", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.setTitleColor(.black, for: .normal)
         button.layer.borderWidth = 1.5
         button.layer.borderColor = UIColor.black.cgColor
         button.backgroundColor = .white
-        button.addTarget(self, action: #selector(handleDoneButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleSaveButton), for: .touchUpInside)
         
         return button
     }()
     
-    @objc fileprivate func handleDoneButton() {
-        let inputs = verifyInputs()
+    @objc fileprivate func handleSaveButton() {
+        self.disableViewsAndAnimateActivityIndicator(true)
+        
+        guard let inputs = verifyInputs() else {
+            self.disableViewsAndAnimateActivityIndicator(false)
+            return
+        }
+        
+        let performanceResult = performanceCalculationResultLabel.text == "Calculate result" ? "" : performanceCalculationResultLabel.text
+        
+        let pointCheckValues: [String : Any] = [
+            Constants.customerName : inputs.customerName,
+            Constants.jobNumber : inputs.jobNumber,
+            Constants.serialNumber : inputs.serialNumber,
+            Constants.modelNumber : inputs.modelNumber,
+            Constants.indoorUnitLocation : indoorUnitLocationTextField.text ?? "",
+            Constants.outdoorLocation : outdoorLocationTextField.text ?? "",
+            Constants.pipeLength : pipeLengthTextField.text ?? 0,
+            Constants.T1 : t1TextField.text ?? 0,
+            Constants.T2 : t2TextField.text ?? 0,
+            Constants.T3 : t3TextField.text ?? 0,
+            Constants.T4 : t4TextField.text ?? 0,
+            Constants.TB : tbTextField.text ?? 0,
+            Constants.TP : tpTextField.text ?? 0,
+            Constants.TH : thTextField.text ?? 0,
+            Constants.FT : ftTextField.text ?? 0,
+            Constants.Fr : frTextField.text ?? 0,
+            Constants.IF : ifTextField.text ?? "", //Needs to be HEX value
+            Constants.OF : ofTextField.text ?? "", //Needs to be HEX value
+            Constants.LA : laTextField.text ?? "", //Needs to be HEX value
+            Constants.CT : ctTextField.text ?? 0,
+            Constants.ST : stTextField.text ?? 0,
+            Constants.faults : faultsTextField.text ?? "",
+            Constants.remoteControlSetting : remoteControlSettingTextField.text ?? "",
+            Constants.modeTempFollowMe : modeTempFollowMeTextField.text ?? "",
+            Constants.operatingPressure : operatingPressureTextField.text ?? 0,
+            Constants.performance : performanceResult ?? "",
+            Constants.fanProgrammedChanged : fanProgrammedChangedSwitch.isOn,
+            Constants.indoorSensorRARelocated : indoorRASensorRelocatedSwitch.isOn,
+            Constants.creationDate : Date().timeIntervalSince1970 //Creation Date
+        ]
+        
+        let pointChecksRef = Database.database().reference().child(Constants.pointCheckRef)
+        let autoRef = pointChecksRef.childByAutoId()
+        
+        autoRef.updateChildValues(pointCheckValues) { (err, _) in
+            if let error = err {
+                print("Error pushing new point check to Firebase database: \(error)")
+                DispatchQueue.main.async {
+                    let alert = UIView.okayAlert(title: "Unable to Save", message: "Currently unable tp save this info to the database. Please try again later.")
+                    self.present(alert, animated: true, completion: nil)
+                    self.disableViewsAndAnimateActivityIndicator(false)
+                    return
+                }
+            }
+            
+            self.disableViewsAndAnimateActivityIndicator(false)
+            self.resetToInitialUI()
+        }
+    }
+    
+    fileprivate func resetToInitialUI() {
+        customerNameTextField.text = ""
+        jobNumberTextField.text = ""
+        serialNumberTextField.text = ""
+        modelNumberTextField.text = ""
+        indoorUnitLocationTextField.text = ""
+        outdoorLocationTextField.text = ""
+        pipeLengthTextField.text = ""
+        t1TextField.text = ""
+        t2TextField.text = ""
+        t3TextField.text = ""
+        t4TextField.text = ""
+        tbTextField.text = ""
+        tpTextField.text = ""
+        thTextField.text = ""
+        ftTextField.text = ""
+        frTextField.text = ""
+        ifTextField.text = ""
+        ofTextField.text = ""
+        laTextField.text = ""
+        ctTextField.text = ""
+        stTextField.text = ""
+        faultsTextField.text = ""
+        remoteControlSettingTextField.text = ""
+        modeTempFollowMeTextField.text = ""
+        operatingPressureTextField.text = ""
+        performanceCalculationResultLabel.text = "Calculate result"
+        fanProgrammedChangedSwitch.isOn = false
+        indoorRASensorRelocatedSwitch.isOn = false
     }
     
     fileprivate func verifyInputs() -> (customerName: String, jobNumber: Int, serialNumber: String, modelNumber: String)? {
@@ -696,7 +834,7 @@ class NewPointCheckVC: UIViewController {
                     self.present(alert, animated: true, completion: nil)
                     return nil
                 } else {
-                    print(char)
+                    continue
                 }
             } else {
                 if let _ = Int(String(char)) {
@@ -709,7 +847,14 @@ class NewPointCheckVC: UIViewController {
             }
         }
         
-        return (customerName, jobNumberInt, serialNumber, "modelnumber")
+        guard let modelNumber = modelNumberTextField.text, modelNumber.count > 0, modelNumber != "" else {
+            let alert = UIView.okayAlert(title: "Error With Model Number", message: "Entering the model number is a manditory field.")
+            self.present(alert, animated: true, completion: nil)
+            
+            return nil
+        }
+        
+        return (customerName, jobNumberInt, serialNumber, modelNumber)
     }
     
     override func viewDidLoad() {
@@ -717,10 +862,17 @@ class NewPointCheckVC: UIViewController {
         navigationItem.title = "New Point Check"
         setupDoneNavBarButton()
         setupViews()
+        setupActivityIndicator()
+    }
+    
+    fileprivate func setupActivityIndicator() {
+        view.addSubview(self.activityIndicator)
+        self.activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        self.activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
     fileprivate func setupDoneNavBarButton() {
-        let doneBarButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(handleDoneButton))
+        let doneBarButton = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(handleSaveButton))
         doneBarButton.tintColor = .black
         navigationItem.rightBarButtonItem = doneBarButton
     }
@@ -938,10 +1090,10 @@ class NewPointCheckVC: UIViewController {
         indoorRASensorRelocatedSwitch.centerYAnchor.constraint(equalTo: indoorRASensorRelocatedLabel.centerYAnchor).isActive = true
         
         //Done button
-        scrollView.addSubview(doneButton)
-        doneButton.anchor(top: nil, left: nil, bottom: scrollView.topAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: view.frame.height + 1780, paddingRight: 0, width: 200, height: 50)
-        doneButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        doneButton.layer.cornerRadius = 50 / 2
+        scrollView.addSubview(saveButton)
+        saveButton.anchor(top: nil, left: nil, bottom: scrollView.topAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: view.frame.height + 1780, paddingRight: 0, width: 200, height: 50)
+        saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        saveButton.layer.cornerRadius = 50 / 2
     }
     
     fileprivate func setupDoneButtonToolBar() -> UIToolbar {

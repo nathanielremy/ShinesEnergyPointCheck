@@ -9,6 +9,8 @@
 import Foundation
 
 struct Constants {
+    static let pointCheckRef = "pointChecks"
+    
     static let customerName = "customerName"
     static let customerNameMeaning = "Customer Name"
     
@@ -91,4 +93,6 @@ struct Constants {
     
     static let indoorSensorRARelocated = "indoorSensorRARelocated"
     static let indoorSensorRARelocatedMeaning = "Indoor R/A Sensor Relocated?"
+    
+    static let creationDate = "creationDate"
 }

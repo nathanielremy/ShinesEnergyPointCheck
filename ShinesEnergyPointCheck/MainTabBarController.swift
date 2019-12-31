@@ -13,9 +13,16 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.delegate = self
         
-        //FIXME: present loging with pin
+        //Must be on main thread to present view from root view
+        DispatchQueue.main.async {
+            let pinCodeVC = PinCodeVC()
+            let pinCodeNavController = UINavigationController(rootViewController: pinCodeVC)
+            pinCodeNavController.modalPresentationStyle = .fullScreen
+            self.present(pinCodeNavController, animated: false, completion: nil)
+        }
         
         setupViewControllers()
     }
