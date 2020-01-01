@@ -751,7 +751,7 @@ class NewPointCheckVC: UIViewController {
             Constants.indoorSensorRARelocated : indoorRASensorRelocatedSwitch.isOn,
             Constants.creationDate : Date().timeIntervalSince1970 //Creation Date
         ]
-            
+        
         let pointChecksRef = Database.database().reference().child(Constants.pointCheckRef)
         let autoRef = pointChecksRef.childByAutoId()
         

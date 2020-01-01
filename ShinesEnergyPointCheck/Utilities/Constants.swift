@@ -99,4 +99,9 @@ struct Constants {
     struct CollectionViewCellIds {
         static let pointCheckCell = "pointCheckCell"
     }
+    
+    struct pin {
+        static let pinRef = "pin"
+        static let currentPin = "currentPin"
+    }
 }
