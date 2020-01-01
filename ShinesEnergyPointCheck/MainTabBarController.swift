@@ -17,12 +17,12 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         self.delegate = self
         
         //Must be on main thread to present view from root view
-        DispatchQueue.main.async {
-            let pinCodeVC = PinCodeVC()
-            let pinCodeNavController = UINavigationController(rootViewController: pinCodeVC)
-            pinCodeNavController.modalPresentationStyle = .fullScreen
-            self.present(pinCodeNavController, animated: false, completion: nil)
-        }
+//        DispatchQueue.main.async {
+//            let pinCodeVC = PinCodeVC()
+//            let pinCodeNavController = UINavigationController(rootViewController: pinCodeVC)
+//            pinCodeNavController.modalPresentationStyle = .fullScreen
+//            self.present(pinCodeNavController, animated: false, completion: nil)
+//        }
         
         setupViewControllers()
     }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4434583623BD14E3001A0F74 /* PointCheckCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4434583523BD14E3001A0F74 /* PointCheckCollectionViewCell.swift */; };
+		4434583923BD206D001A0F74 /* PointCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4434583823BD206D001A0F74 /* PointCheck.swift */; };
 		4448FA2823B7B433003A3E17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4448FA2723B7B433003A3E17 /* AppDelegate.swift */; };
 		4448FA2A23B7B433003A3E17 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4448FA2923B7B433003A3E17 /* SceneDelegate.swift */; };
 		4448FA2E23B7B434003A3E17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4448FA2D23B7B434003A3E17 /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		3EBB19700BED96AA237E3C6E /* Pods_ShinesEnergyPointCheck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShinesEnergyPointCheck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4434583523BD14E3001A0F74 /* PointCheckCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCheckCollectionViewCell.swift; sourceTree = "<group>"; };
+		4434583823BD206D001A0F74 /* PointCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCheck.swift; sourceTree = "<group>"; };
 		4448FA2423B7B433003A3E17 /* ShinesEnergyPointCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShinesEnergyPointCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4448FA2723B7B433003A3E17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4448FA2923B7B433003A3E17 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +58,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4434583723BD205D001A0F74 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4434583823BD206D001A0F74 /* PointCheck.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		4448FA1B23B7B433003A3E17 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +91,7 @@
 				4448FA2923B7B433003A3E17 /* SceneDelegate.swift */,
 				4448FA4123B7BBB5003A3E17 /* MainTabBarController.swift */,
 				4448FA3E23B7B759003A3E17 /* Utilities */,
+				4434583723BD205D001A0F74 /* Models */,
 				44A65E6E23BBECC6004640D5 /* PinCode */,
 				4448FA4323B7BD01003A3E17 /* NewPointCheck */,
 				4448FA4423B7BD3D003A3E17 /* ViewPointChecks */,
@@ -128,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				4448FA4523B7BD5B003A3E17 /* ViewPointChecks.swift */,
+				4434583523BD14E3001A0F74 /* PointCheckCollectionViewCell.swift */,
 			);
 			path = ViewPointChecks;
 			sourceTree = "<group>";
@@ -297,7 +311,9 @@
 				4448FA2A23B7B433003A3E17 /* SceneDelegate.swift in Sources */,
 				4448FA4223B7BBB5003A3E17 /* MainTabBarController.swift in Sources */,
 				4448FA4823B8011B003A3E17 /* Constants.swift in Sources */,
+				4434583623BD14E3001A0F74 /* PointCheckCollectionViewCell.swift in Sources */,
 				44A65E7023BBEDBA004640D5 /* PinCodeVC.swift in Sources */,
+				4434583923BD206D001A0F74 /* PointCheck.swift in Sources */,
 				4448FA3D23B7B486003A3E17 /* NewPointCheckVC.swift in Sources */,
 				4448FA4023B7B777003A3E17 /* Extensions.swift in Sources */,
 			);

@@ -19,6 +19,23 @@ extension UIView {
         return alertController
     }
     
+    static func noResultsView(withText text: String) -> UIView {
+        let containerView = UIView()
+        containerView.backgroundColor = .white
+        
+        let label = UILabel()
+        label.text = text
+        label.textColor = .lightGray
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        containerView.addSubview(label)
+        label.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        
+        return containerView
+    }
+    
     func anchor(top: NSLayoutYAxisAnchor?, left: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, right: NSLayoutXAxisAnchor?, paddingTop: CGFloat, paddingLeft: CGFloat, paddingBottom: CGFloat, paddingRight: CGFloat, width: CGFloat?, height: CGFloat?) {
         
         self.translatesAutoresizingMaskIntoConstraints = false

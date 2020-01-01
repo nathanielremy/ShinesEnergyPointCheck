@@ -95,4 +95,8 @@ struct Constants {
     static let indoorSensorRARelocatedMeaning = "Indoor R/A Sensor Relocated?"
     
     static let creationDate = "creationDate"
+    
+    struct CollectionViewCellIds {
+        static let pointCheckCell = "pointCheckCell"
+    }
 }
