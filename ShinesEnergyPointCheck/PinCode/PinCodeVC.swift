@@ -202,7 +202,7 @@ class PinCodeVC: UIViewController {
                     
                     return
                 } else if i == 3 {
-                    self.dismiss(animated: true, completion: nil)
+                    self.dismiss(animated: false, completion: nil)
                 }
             }
         }
@@ -244,6 +244,34 @@ class PinCodeVC: UIViewController {
         return label
     }()
     
+    lazy var backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Back", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.tintColor  = .black
+        button.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    @objc fileprivate func handleBackButton() {
+        if pinArray.count == 0 {
+            return
+        } else if pinArray.count == 1 {
+            pinArray.removeLast()
+            firstEntry.backgroundColor = UIColor.black.withAlphaComponent(0.33)
+        } else if pinArray.count == 2 {
+            pinArray.removeLast()
+            secondEntry.backgroundColor = UIColor.black.withAlphaComponent(0.33)
+        } else if pinArray.count == 3 {
+            pinArray.removeLast()
+            thirdEntry.backgroundColor = UIColor.black.withAlphaComponent(0.33)
+        } else if pinArray.count == 4 {
+            pinArray.removeLast()
+            fourthEntry.backgroundColor = UIColor.black.withAlphaComponent(0.33)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -267,7 +295,6 @@ class PinCodeVC: UIViewController {
         pinRef.observeSingleEvent(of: .value, with: { (snapshot) in
             
             guard let pinDictionary = snapshot.value as? [String : Int], let pinInt = pinDictionary[Constants.pin.currentPin] else {
-                //FIXME: DISPLAY ERROR MESSAGE
                 let alert = UIView.okayAlert(title: "Unable to Retrieve PIN", message: "Sorry! We are currently unable to find the correct PIN.")
                 self.present(alert, animated: true, completion: nil)
                 return
@@ -280,6 +307,8 @@ class PinCodeVC: UIViewController {
                 self.animateAndShowActivityIndicator(false)
             }
         }) { (error) in
+            let alert = UIView.okayAlert(title: "Unable to Retrieve PIN", message: "Sorry! We are currently unable to find the correct PIN.")
+            self.present(alert, animated: true, completion: nil)
             print("Error fetching PIN: \(error)")
         }
     }
@@ -359,5 +388,8 @@ class PinCodeVC: UIViewController {
         secondEntry.layer.cornerRadius = 10
         thirdEntry.layer.cornerRadius = 10
         fourthEntry.layer.cornerRadius = 10
+        
+        view.addSubview(backButton)
+        backButton.anchor(top: finalStack.bottomAnchor, left: zeroButton.rightAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 75, height: 75)
     }
 }
