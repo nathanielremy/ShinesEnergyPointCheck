@@ -17,14 +17,23 @@ struct Constants {
     static let jobNumber = "jobNumber"
     static let jobNumberMeaning = "Job Number"
     
-    static let serialNumber = "serialNumber"
-    static let serialNumberMeaning = "Serial Number"
+    static let indoorSerialNumber = "indoorSerialNumber"
+    static let indoorSerialNumberMeaning = "Indoor Serial Number"
     
-    static let modelNumber = "modelNumber"
-    static let modelNumberMeaning = "Model Number"
+    static let indoorModelNumber = "indoorModelNumber"
+    static let indoorModelNumberMeaning = "Indoor Model Number"
     
     static let indoorUnitLocation = "indoorUnitLocation"
     static let indoorUnitLocationMeaning = "Indoor Unit Location"
+    
+    static let outdoorSerialNumber = "outdoorSerialNumber"
+    static let outdoorSerialNumberMeaning = "Outdoor Serial Number"
+    
+    static let outdoorModelNumber = "outdoorModelNumber"
+    static let outdoorModelNumberMeaning = "Outdoor Model Number"
+    
+    static let outdoorUnitLocation = "outdoorUnitLocation"
+    static let outdoorUnitLocationMeaning = "Outdoor Unit Location"
     
     static let T1 = "T1"
     static let T1Meaning = "Room Temperature"
@@ -74,9 +83,6 @@ struct Constants {
     static let pipeLength = "pipeLength"
     static let pipeLengthMeaning = "Length of Ref Pipe Between?"
     
-    static let outdoorLocation = "outdoorLocation"
-    static let outdoorLocationMeaning = "Facing Which Direction"
-    
     static let remoteControlSetting = "remoteControlSetting"
     
     static let modeTempFollowMe = "modeTempFollowMe"
@@ -93,6 +99,9 @@ struct Constants {
     
     static let indoorSensorRARelocated = "indoorSensorRARelocated"
     static let indoorSensorRARelocatedMeaning = "Indoor R/A Sensor Relocated?"
+    
+    static let comments = "comments"
+    static let commentsMeaning = "Comments"
     
     static let creationDate = "creationDate"
     

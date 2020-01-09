@@ -13,10 +13,12 @@ struct PointCheck {
     
     let customerName: String
     let jobNumber: Int
-    let serialNumber: String
-    let modelNumber: String
+    let indoorSerialNumber: String
+    let indoorModelNumber: String
     let indoorUnitLocation: String
-    let outdoorLocation: String
+    let outdoorSerialNumber: String
+    let outdoorModelNumber: String
+    let outdoorUnitLocation: String
     let pipeLength: Int
     let T1: Int
     let T2: Int
@@ -39,6 +41,7 @@ struct PointCheck {
     let performance: String
     let fanProgrammedChanged: Bool
     let indoorRASensorRelocated: Bool
+    let comments: String
     
     let creationDate: Date
     
@@ -47,10 +50,12 @@ struct PointCheck {
         
         self.customerName = dictionary[Constants.customerName] as? String  ?? "No Name"
         self.jobNumber = dictionary[Constants.jobNumber] as? Int  ?? 0000000
-        self.serialNumber = dictionary[Constants.serialNumber] as? String  ?? "No Serial Number"
-        self.modelNumber = dictionary[Constants.modelNumber] as? String ?? "No Model Number"
+        self.indoorSerialNumber = dictionary[Constants.indoorSerialNumber] as? String  ?? "No Indoor Serial Number"
+        self.indoorModelNumber = dictionary[Constants.indoorModelNumber] as? String ?? "No Model Number"
         self.indoorUnitLocation = dictionary[Constants.indoorUnitLocation] as? String ?? "No Indoor Unit Location"
-        self.outdoorLocation = dictionary[Constants.outdoorLocation] as? String ?? "No Outdoor location"
+        self.outdoorSerialNumber = dictionary[Constants.outdoorSerialNumber] as? String ?? "No Outdoor Serial Number"
+        self.outdoorModelNumber = dictionary[Constants.outdoorModelNumber] as? String ?? "No Outdoor Model Number"
+        self.outdoorUnitLocation = dictionary[Constants.outdoorUnitLocation] as? String ?? "No Outdoor location"
         self.pipeLength = dictionary[Constants.pipeLength] as? Int ?? 000
         self.T1 = dictionary[Constants.T1] as? Int ?? 000
         self.T2 = dictionary[Constants.T2] as? Int ?? 000
@@ -73,6 +78,7 @@ struct PointCheck {
         self.performance = dictionary[Constants.performance] as? String ?? "No Performance Recorded"
         self.fanProgrammedChanged = dictionary[Constants.fanProgrammedChanged] as? Bool ?? false
         self.indoorRASensorRelocated = dictionary[Constants.indoorSensorRARelocated] as? Bool ?? false
+        self.comments = dictionary[Constants.comments] as? String ?? "No Comments"
         
         let secondsFrom1970 = dictionary[Constants.creationDate] as? Double ?? 0
         self.creationDate = Date(timeIntervalSince1970: secondsFrom1970)

@@ -17,11 +17,14 @@ class PointCheckCollectionViewCell: UICollectionViewCell {
                 return
             }
             
+            print(pCheck)
+            print("\n\n\n")
+            
             self.customerNameLabel.text = pCheck.customerName
             self.timeAgoLabel.text = pCheck.creationDate.timeAgoDisplay()
             setAttributedText(forLabel: jobNumberLabel, title: "Job Number: ", text: "\(pCheck.jobNumber)")
-            setAttributedText(forLabel: serialNumberLabel, title: "Serial Number: ", text: pCheck.serialNumber)
-            setAttributedText(forLabel: modelNumberLabel, title: "Model Number: ", text: pCheck.modelNumber)
+            setAttributedText(forLabel: serialNumberLabel, title: "Serial Number: ", text: pCheck.indoorSerialNumber)
+            setAttributedText(forLabel: modelNumberLabel, title: "Model Number: ", text: pCheck.indoorModelNumber)
         }
     }
     
