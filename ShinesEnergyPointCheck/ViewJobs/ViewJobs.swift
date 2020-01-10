@@ -10,15 +10,15 @@ import Foundation
 import UIKit
 import Firebase
 
-class ViewPointChecksVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class ViewJobsVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     //MARK: Stored properties
-    var pointChecks = [PointCheck]()
-    var tempPointChecks = [PointCheck]()
+    var jobs = [Job]()
+    var tempJobs = [Job]()
     
-    var pointChecksFetched = 0
+    var jobsFetched = 0
     
-    var canFetchPointChecks = true
+    var canFetchJobs = true
     
     let noResultsView: UIView = {
         let view = UIView.noResultsView(withText: "No Point Checks at the Moment.")
@@ -72,10 +72,10 @@ class ViewPointChecksVC: UICollectionViewController, UICollectionViewDelegateFlo
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
-        navigationItem.title = "Point Checks"
+        navigationItem.title = "Jobs"
         
         //Register collection view cell
-        collectionView.register(PointCheckCollectionViewCell.self, forCellWithReuseIdentifier: Constants.CollectionViewCellIds.pointCheckCell)
+        collectionView.register(JobCollectionViewCell.self, forCellWithReuseIdentifier: Constants.CollectionViewCellIds.jobCell)
         
         collectionView?.alwaysBounceVertical = true
         
@@ -91,64 +91,73 @@ class ViewPointChecksVC: UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     @objc fileprivate func handleRefresh() {
-        if !canFetchPointChecks {
+        if !canFetchJobs {
             return
         }
         
-        self.tempPointChecks.removeAll()
-        self.pointChecksFetched = 0
+        self.tempJobs.removeAll()
+        self.jobsFetched = 0
         
         self.fetchPointCehcks()
     }
     
     fileprivate func fetchPointCehcks() {
-        if !canFetchPointChecks {
+        if !canFetchJobs {
             return
         }
         
-        self.canFetchPointChecks = false
+        self.canFetchJobs = false
         
         let pointCheckRef = Database.database().reference().child(Constants.pointCheckRef)
         var query = pointCheckRef.queryOrdered(byChild: Constants.creationDate)
         
-        var numberOfPointChecksToFetch: UInt = 20
+        var numberOfJobsToFetch: UInt = 20
         
-        if self.tempPointChecks.count > 0 {
-            let value = self.tempPointChecks.last?.creationDate.timeIntervalSince1970
+        if self.tempJobs.count > 0 {
+            let value = self.tempJobs.last?.creationDate.timeIntervalSince1970
             //Remove last pointCheck in array so it does not get duplicated when re-fetching
-            self.tempPointChecks.removeLast()
-            self.pointChecksFetched -= 1
-            numberOfPointChecksToFetch = 21
+            self.tempJobs.removeLast()
+            self.jobsFetched -= 1
+            numberOfJobsToFetch = 21
             query = query.queryEnding(atValue: value)
         }
         
-        query.queryLimited(toLast: numberOfPointChecksToFetch).observeSingleEvent(of: .value, with: { (snapshot) in
+        query.queryLimited(toLast: numberOfJobsToFetch).observeSingleEvent(of: .value, with: { (snapshot) in
             
-            guard let pointChecksDictionary = snapshot.value as? [String : [String : Any]] else {
-                self.pointChecks.removeAll()
+            guard let jobsDictionary = snapshot.value as? [String : [String : Any]] else {
+                self.jobs.removeAll()
                 self.showNoResultsFoundView()
-                self.canFetchPointChecks = true
+                self.canFetchJobs = true
                 self.animateAndShowActivityIndicator(false)
                 return
             }
             
-            var pointChecksCreated = 0
-            pointChecksDictionary.forEach { (key, value) in
-                let pointCheck = PointCheck(id: key, dictionary: value)
-                pointChecksCreated += 1
-                self.pointChecksFetched += 1
+            var jobsCreated = 0
+            jobsDictionary.forEach { (key, value) in
                 
-                self.tempPointChecks.append(pointCheck)
-                self.tempPointChecks.sort(by: { (pointCheck1, pointCheck2) -> Bool in
-                    return pointCheck1.creationDate.compare(pointCheck2.creationDate) == .orderedDescending
+                var pointChecks = [String : Any]()
+                
+                value.forEach { (valKey, valValue) in     //Usually an unacceptable algorithm but in this instance is fine
+                    if valKey != Constants.creationDate { // Since maximum number of operations == O(5)
+                        pointChecks[valKey] = valValue
+                    }
+                }
+                
+                let job = Job(id: key, creationDate: value[Constants.creationDate] as? Double ?? 0.0 , pointChecks: pointChecks)
+                jobsCreated += 1
+                self.jobsFetched += 1
+                
+                self.tempJobs.append(job)
+                self.tempJobs.sort(by: { (job1, job2) -> Bool in
+                    return job1.creationDate.compare(job2.creationDate) == .orderedDescending
                 })
                 
-                if pointChecksCreated == pointChecksDictionary.count {
-                    self.pointChecks = self.tempPointChecks
-                    self.canFetchPointChecks = true
+                if jobsCreated == jobsDictionary.count {
+                    self.jobs = self.tempJobs
+                    self.canFetchJobs = true
                     self.animateAndShowActivityIndicator(false)
                     
-                    if self.tempPointChecks.count == 0 {
+                    if self.tempJobs.count == 0 {
                         self.showNoResultsFoundView()
                     } else {
                         self.removeNoResultsView()
@@ -158,9 +167,9 @@ class ViewPointChecksVC: UICollectionViewController, UICollectionViewDelegateFlo
                 }
             }
         }) { (error) in
-            self.pointChecks.removeAll()
+            self.jobs.removeAll()
             self.showNoResultsFoundView()
-            self.canFetchPointChecks = true
+            self.canFetchJobs = true
             self.animateAndShowActivityIndicator(false)
             print("Error fetching pointchecks: \(error)")
             
@@ -170,7 +179,7 @@ class ViewPointChecksVC: UICollectionViewController, UICollectionViewDelegateFlo
     
     //MARK: CollectionView Methods
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.pointChecks.count
+        return self.jobs.count
     }
     
     // What's the vertical spacing between each cell ?
@@ -179,14 +188,14 @@ class ViewPointChecksVC: UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CollectionViewCellIds.pointCheckCell, for: indexPath) as? PointCheckCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CollectionViewCellIds.jobCell, for: indexPath) as? JobCollectionViewCell else {
             return UICollectionViewCell()
         }
         
-        cell.pointCheck = self.pointChecks[indexPath.item]
+        cell.job = self.jobs[indexPath.item]
         
         //Fetch again more pointChecks if collectionView hits bottom and if there are more pointChecks to fetch
-        if indexPath.item == self.pointChecks.count - 1 && (Double(self.pointChecksFetched % 20) == 0.0) {
+        if indexPath.item == self.jobs.count - 1 && (Double(self.jobsFetched % 20) == 0.0) {
             self.fetchPointCehcks()
         }
         
@@ -194,10 +203,13 @@ class ViewPointChecksVC: UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 142.5)
+        return CGSize(width: view.frame.width, height: 85)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
+        let viewPointChecksVC = ViewPointChecksVC(collectionViewLayout: UICollectionViewFlowLayout())
+        viewPointChecksVC.pointChecks = jobs[indexPath.item].pointChecks
+        
+        self.navigationController?.pushViewController(viewPointChecksVC, animated: true)
     }
 }

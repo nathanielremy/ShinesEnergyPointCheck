@@ -32,7 +32,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         let newPointCheckNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "plus_unselected"), selectedImage: #imageLiteral(resourceName: "plus_unselected"), rootViewController: NewPointCheckVC())
         
         //View Point Checks
-        let viewPointChecksNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_unselected"), rootViewController: ViewPointChecksVC(collectionViewLayout: UICollectionViewFlowLayout()))
+        let viewPointChecksNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_unselected"), rootViewController: ViewJobsVC(collectionViewLayout: UICollectionViewFlowLayout()))
         
         tabBar.tintColor = .black
         self.viewControllers = [

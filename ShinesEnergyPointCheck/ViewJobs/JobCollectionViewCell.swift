@@ -8,29 +8,24 @@
 
 import UIKit
 
-class PointCheckCollectionViewCell: UICollectionViewCell {
+class JobCollectionViewCell: UICollectionViewCell {
     
     //MARK: Stored properties
-    var pointCheck: PointCheck? {
+    var job: Job? {
         didSet {
-            guard let pCheck = pointCheck else {
+            guard let job = job else {
                 return
             }
             
-            print(pCheck)
-            print("\n\n\n")
-            
-            self.customerNameLabel.text = pCheck.customerName
-            self.timeAgoLabel.text = pCheck.creationDate.timeAgoDisplay()
-            setAttributedText(forLabel: jobNumberLabel, title: "Job Number: ", text: "\(pCheck.jobNumber)")
-            setAttributedText(forLabel: serialNumberLabel, title: "Serial Number: ", text: pCheck.indoorSerialNumber)
-            setAttributedText(forLabel: modelNumberLabel, title: "Model Number: ", text: pCheck.indoorModelNumber)
+            self.customerNameLabel.text = job.pointChecks[0].customerName
+            self.timeAgoLabel.text = job.creationDate.timeAgoDisplay()
+            setAttributedText(forLabel: jobNumberLabel, title: "Job Number: ", text: String(job.pointChecks[0].jobNumber))
         }
     }
     
     fileprivate func setAttributedText(forLabel label: UILabel, title: String, text: String) {
         let attributedText = NSMutableAttributedString(string: title, attributes: [.font : UIFont.boldSystemFont(ofSize: 14), .foregroundColor : UIColor.black])
-        attributedText.append(NSAttributedString(string: text, attributes: [.font : UIFont.systemFont(ofSize: 12), .foregroundColor : UIColor.black]))
+        attributedText.append(NSAttributedString(string: text, attributes: [.font : UIFont.systemFont(ofSize: 14), .foregroundColor : UIColor.black]))
         
         label.attributedText = attributedText
     }
@@ -46,22 +41,6 @@ class PointCheckCollectionViewCell: UICollectionViewCell {
     }()
     
     let jobNumberLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.numberOfLines = 0
-        
-        return label
-    }()
-    
-    let serialNumberLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.numberOfLines = 0
-        
-        return label
-    }()
-    
-    let modelNumberLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
         label.numberOfLines = 0
@@ -93,12 +72,6 @@ class PointCheckCollectionViewCell: UICollectionViewCell {
         
         addSubview(jobNumberLabel)
         jobNumberLabel.anchor(top: customerNameLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: -8, width: nil, height: 20)
-        
-        addSubview(serialNumberLabel)
-        serialNumberLabel.anchor(top: jobNumberLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: -8, width: nil, height: 20)
-        
-        addSubview(modelNumberLabel)
-        modelNumberLabel.anchor(top: serialNumberLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: -8, width: nil, height: 20)
         
         addSubview(timeAgoLabel)
         timeAgoLabel.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 8, paddingBottom: -8, paddingRight: -8, width: nil, height: 12.5)

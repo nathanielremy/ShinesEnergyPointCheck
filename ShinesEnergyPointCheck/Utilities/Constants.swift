@@ -106,6 +106,7 @@ struct Constants {
     static let creationDate = "creationDate"
     
     struct CollectionViewCellIds {
+        static let jobCell = "jobCell"
         static let pointCheckCell = "pointCheckCell"
     }
     

@@ -844,9 +844,14 @@ class NewPointCheckVC: UIViewController {
         ]
         
         let pointChecksRef = Database.database().reference().child(Constants.pointCheckRef)
-        let autoRef = pointChecksRef.childByAutoId()
+        let autoRef = pointChecksRef.child(String(inputs.jobNumber))
         
-        autoRef.updateChildValues(pointCheckValues) { (err, _) in
+        let databaseValues: [String : Any] = [
+            Constants.creationDate : pointCheckValues[Constants.creationDate] ?? Date().timeIntervalSince1970, //Creation Date
+            UUID().uuidString : pointCheckValues
+        ]
+        
+        autoRef.updateChildValues(databaseValues) { (err, _) in
             if let error = err {
                 print("Error pushing new point check to Firebase database: \(error)")
                 DispatchQueue.main.async {
