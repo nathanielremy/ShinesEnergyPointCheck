@@ -84,6 +84,7 @@ struct Constants {
     static let pipeLengthMeaning = "Length of Ref Pipe Between?"
     
     static let remoteControlSetting = "remoteControlSetting"
+    static let remoteControlSettingMeaning = "Remote Control Setting"
     
     static let modeTempFollowMe = "modeTempFollowMe"
     static let modeTempFollowMeMeaning = "Mode, Temp & Follow Me?"

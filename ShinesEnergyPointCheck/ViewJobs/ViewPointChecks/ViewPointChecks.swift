@@ -53,6 +53,8 @@ class ViewPointChecksVC: UICollectionViewController, UICollectionViewDelegateFlo
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let pointCheckDataVC = PointCheckDataVC()
+        pointCheckDataVC.pointCheck = self.pointChecks[indexPath.item]
+        
         self.navigationController?.pushViewController(pointCheckDataVC, animated: true)
     }
 }

@@ -38,7 +38,7 @@ class NewPointCheckVC: UIViewController {
         indoorUnitLocationTextField.isEnabled = !bool
         outdoorSerialNumberTextField.isEnabled = !bool
         outdoorModelNumberTextField.isEnabled = !bool
-        outdoorLocationTextField.isEnabled = !bool
+        outdoorUnitLocationTextField.isEnabled = !bool
         pipeLengthTextField.isEnabled = !bool
         t1TextField.isEnabled = !bool
         t2TextField.isEnabled = !bool
@@ -228,15 +228,14 @@ class NewPointCheckVC: UIViewController {
     let outdoorUnitLocationLabel: UILabel = {
         let label = UILabel()
         
-        let attributedText = NSMutableAttributedString(string: "Outdoor Location ", attributes: [.font : UIFont.boldSystemFont(ofSize: 18), .foregroundColor : UIColor.black])
-        attributedText.append(NSAttributedString(string: "(\(Constants.outdoorUnitLocationMeaning))", attributes: [.font : UIFont.systemFont(ofSize: 14), .foregroundColor : UIColor.gray]))
+        let attributedText = NSMutableAttributedString(string: Constants.outdoorUnitLocationMeaning, attributes: [.font : UIFont.boldSystemFont(ofSize: 18), .foregroundColor : UIColor.black])
         
         label.attributedText = attributedText
         
         return label
     }()
     
-    lazy var outdoorLocationTextField: UITextField = {
+    lazy var outdoorUnitLocationTextField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Over garage"
         tf.font = UIFont.systemFont(ofSize: 14)
@@ -622,7 +621,7 @@ class NewPointCheckVC: UIViewController {
     
     let remoteControlSettingLabel: UILabel = {
         let label = UILabel()
-        label.text = "Remote Control Setting"
+        label.text = Constants.remoteControlSettingMeaning
         label.font = UIFont.boldSystemFont(ofSize: 18)
         
         return label
@@ -755,6 +754,7 @@ class NewPointCheckVC: UIViewController {
         let textView = UITextView()
         textView.layer.borderWidth = 1
         textView.layer.masksToBounds = true
+        textView.isScrollEnabled = true
         
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
@@ -816,26 +816,26 @@ class NewPointCheckVC: UIViewController {
             Constants.indoorUnitLocation : indoorUnitLocationTextField.text ?? "",
             Constants.outdoorSerialNumber : inputs.outdoorSerialNumber,
             Constants.outdoorModelNumber : inputs.outdoorModelNumber,
-            Constants.outdoorUnitLocation : outdoorLocationTextField.text ?? "",
-            Constants.pipeLength : pipeLengthTextField.text ?? 0,
-            Constants.T1 : t1TextField.text ?? 0,
-            Constants.T2 : t2TextField.text ?? 0,
-            Constants.T3 : t3TextField.text ?? 0,
-            Constants.T4 : t4TextField.text ?? 0,
-            Constants.TB : tbTextField.text ?? 0,
-            Constants.TP : tpTextField.text ?? 0,
-            Constants.TH : thTextField.text ?? 0,
-            Constants.FT : ftTextField.text ?? 0,
-            Constants.Fr : frTextField.text ?? 0,
+            Constants.outdoorUnitLocation : outdoorUnitLocationTextField.text ?? "",
+            Constants.pipeLength : Int(pipeLengthTextField.text ?? "") ?? 0,
+            Constants.T1 : Int(t1TextField.text ?? "") ?? 0,
+            Constants.T2 : Int(t2TextField.text ?? "") ?? 0,
+            Constants.T3 : Int(t3TextField.text ?? "") ?? 0,
+            Constants.T4 : Int(t4TextField.text ?? "") ?? 0,
+            Constants.TB : Int(tbTextField.text ?? "") ?? 0,
+            Constants.TP : Int(tpTextField.text ?? "") ?? 0,
+            Constants.TH : Int(thTextField.text ?? "") ?? 0,
+            Constants.FT : Int(ftTextField.text ?? "") ?? 0,
+            Constants.Fr : Int(frTextField.text ?? "") ?? 0,
             Constants.IF : ifTextField.text ?? "", //Needs to be HEX value
             Constants.OF : ofTextField.text ?? "", //Needs to be HEX value
             Constants.LA : laTextField.text ?? "", //Needs to be HEX value
-            Constants.CT : ctTextField.text ?? 0,
-            Constants.ST : stTextField.text ?? 0,
+            Constants.CT : Int(ctTextField.text ?? "") ?? 0,
+            Constants.ST : Int(stTextField.text ?? "") ?? 0,
             Constants.faults : faultsTextField.text ?? "",
             Constants.remoteControlSetting : remoteControlSettingTextField.text ?? "",
             Constants.modeTempFollowMe : modeTempFollowMeTextField.text ?? "",
-            Constants.operatingPressure : operatingPressureTextField.text ?? 0,
+            Constants.operatingPressure : Int(operatingPressureTextField.text ?? "") ?? 0,
             Constants.performance : performanceResult ?? "",
             Constants.fanProgrammedChanged : fanProgrammedChangedSwitch.isOn,
             Constants.indoorSensorRARelocated : indoorRASensorRelocatedSwitch.isOn,
@@ -878,7 +878,7 @@ class NewPointCheckVC: UIViewController {
         indoorSerialNumberTextField.text = ""
         indoorModelNumberTextField.text = ""
         indoorUnitLocationTextField.text = ""
-        outdoorLocationTextField.text = ""
+        outdoorUnitLocationTextField.text = ""
         pipeLengthTextField.text = ""
         t1TextField.text = ""
         t2TextField.text = ""
@@ -1067,12 +1067,12 @@ class NewPointCheckVC: UIViewController {
         scrollView.addSubview(outdoorUnitLocationLabel)
         outdoorUnitLocationLabel.anchor(top: outdoorModelNumberTextField.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: nil)
         
-        scrollView.addSubview(outdoorLocationTextField)
-        outdoorLocationTextField.anchor(top: outdoorUnitLocationLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 8, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: 35)
+        scrollView.addSubview(outdoorUnitLocationTextField)
+        outdoorUnitLocationTextField.anchor(top: outdoorUnitLocationLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 8, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: 35)
         
         //Pipe Length
         scrollView.addSubview(pipeLengthLabel)
-        pipeLengthLabel.anchor(top: outdoorLocationTextField.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: nil)
+        pipeLengthLabel.anchor(top: outdoorUnitLocationTextField.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: nil)
         
         scrollView.addSubview(pipeLengthTextField)
         pipeLengthTextField.anchor(top: pipeLengthLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 8, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: nil, height: 35)

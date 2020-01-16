@@ -21,7 +21,7 @@ class ViewJobsVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
     var canFetchJobs = true
     
     let noResultsView: UIView = {
-        let view = UIView.noResultsView(withText: "No Point Checks at the Moment.")
+        let view = UIView.noResultsView(withText: "No Point Checks at The Moment.")
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -137,8 +137,8 @@ class ViewJobsVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
                 
                 var pointChecks = [String : Any]()
                 
-                value.forEach { (valKey, valValue) in     //Usually an unacceptable algorithm but in this instance is fine
-                    if valKey != Constants.creationDate { // Since maximum number of operations == O(5)
+                value.forEach { (valKey, valValue) in     //Usually an unacceptable algorithm but in this case is fine
+                    if valKey != Constants.creationDate { //Since maximum number of operations == O(n) where n == 5
                         pointChecks[valKey] = valValue
                     }
                 }
