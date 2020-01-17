@@ -54,7 +54,7 @@ class PointCheckDataVC: UIViewController {
     
     fileprivate func makeAttributedText(forLabel label: UILabel, title: String, value: String) {
         let attributedText = NSMutableAttributedString(string: title + "\n", attributes: [.font : UIFont.boldSystemFont(ofSize: 18), .foregroundColor : UIColor.black])
-        attributedText.append(NSAttributedString(string: value, attributes: [.font : UIFont.systemFont(ofSize: 16), .foregroundColor : UIColor.black]))
+        attributedText.append(NSAttributedString(string: value, attributes: [.font : UIFont.systemFont(ofSize: 14), .foregroundColor : UIColor.black]))
         
         label.attributedText = attributedText
     }

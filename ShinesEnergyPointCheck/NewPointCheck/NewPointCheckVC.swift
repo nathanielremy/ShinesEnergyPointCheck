@@ -902,6 +902,8 @@ class NewPointCheckVC: UIViewController {
         fanProgrammedChangedSwitch.isOn = false
         indoorRASensorRelocatedSwitch.isOn = false
         commentsTextView.text = ""
+        
+        scrollView.setContentOffset(.zero, animated: true)
     }
     
     fileprivate func verifyInputs() -> (customerName: String, jobNumber: Int, indoorSerialNumber: String, indoorModelNumber: String, outdoorSerialNumber: String, outdoorModelNumber: String)? {
